@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#### Procurar uma coluna na tabela do banco de dados postgresql. ####
+
+select
+c.relname,
+a.attname as "Column",
+pg_catalog.format_type(a.atttypid, a.atttypmod) as "Datatype"
+from pg_catalog.pg_attribute a
+inner join pg_stat_user_tables c on a.attrelid = c.relid
+WHERE
+a.attnum > 0 AND
+NOT a.attisdropped and a.attname like '%j91%'
+order by c.relname, a.attname;
+
+#### Edita um arquivo que precisa de permissão de root sem sair do vim. #### 
+
+:w !sudo tee %
+
+# Obs: para sair do arquivo :q!
+
+####  ####
