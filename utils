@@ -19,4 +19,6 @@ order by c.relname, a.attname;
 
 # Obs: para sair do arquivo :q!
 
-####  ####
+#### Listar arquivos excluindo alguns diretórios  ####
+
+find . -name '*.php' -mtime -5 -not \( -path "./modification/*" -o -path "./tmp/*" \)
