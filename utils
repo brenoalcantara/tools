@@ -22,3 +22,59 @@ order by c.relname, a.attname;
 #### Listar arquivos excluindo alguns diretórios  ####
 
 find . -name '*.php' -mtime -5 -not \( -path "./modification/*" -o -path "./tmp/*" \)
+
+### Função para trocar caracteres  ###
+
+
+create or replace function w_fc_troca_caracter(texto text)
+returns varchar as 
+$BODY$
+declare
+strCaracteres       text;
+strCaracteresTrocar text;
+strNovoCaracter     text default '';
+strRetirar          char(1);
+strTrocar           char(1);
+       strA char(1);
+strCaracter         char(1);
+intTamanhoTexto     integer;
+intContador         integer default 0;
+intAchou            integer default 0;
+begin
+strCaracteres       := " ÚúÙùÛûÂâÁáÀàÃãéÉêÊèÈóÓôÔòÒõÕíÍìÌîÎçÇ°ºª\'";
+strCaracteresTrocar := " UuUuUuAaAaAaAaeEeEeEoOoOoOoOiIiIiIcCooo ";
+
+intTamanhoTexto := length(texto);
+
+while (intContador <= (intTamanhoTexto-1)) loop
+strCaracter := substring(texto, intContador+1, 1);
+
+raise notice 'CaracterInicial: %', strCaracter;
+intAchou = 0;
+  
+if (strCaracter <> ' ') then
+for num IN 0..length(strCaracteres) loop
+--raise notice 'CaracterTrocar: %', substring(strCaracteres, num, 1);
+strRetirar := substring(strCaracteres      , num, 1);
+strTrocar  := substring(strCaracteresTrocar, num, 1);
+if (strRetirar = strCaracter) then
+intAchou = 1;
+num = length(strCaracteres) + 1; 
+strA = strTrocar;
+end if;
+end loop;
+if (intAchou = 0) then
+strNovoCaracter := strNovoCaracter || strCaracter;
+else 
+strNovoCaracter := strNovoCaracter || strA;
+end if;	
+else
+strNovoCaracter := strNovoCaracter || ' ';
+end if;
+
+intContador := intContador + 1;
+end loop;
+return strNovoCaracter;
+end;
+$BODY$
+LANGUAGE plpgsql;
