@@ -1,19 +1,40 @@
-let user_emmet_expandabbr_key = '<c-e>'
+"" Visual Settings
+syntax enable
+set ruler
+set number
+colorscheme monokai
 
-set encoding=utf8
-set nu
+"" Encoding
+
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+
+"" Search
+
+set hlsearch
 set ignorecase
-set hls
+
+"" Tabs
+
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=0
+set expandtab
+
+"" Plugins
 
 execute pathogen#infect()
 
-syntax enable
-colorscheme monokai
+"" NERDTree configuration
 
 map <C-n> :NERDTreeToggle<CR>
+
+"" Emmet configuration
+
+let user_emmet_expandabbr_key = '<c-e>'
+
+"" NERDTree Git configurarion
 
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
