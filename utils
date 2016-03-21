@@ -23,8 +23,7 @@ order by c.relname, a.attname;
 
 find . -name '*.php' -mtime -5 -not \( -path "./modification/*" -o -path "./tmp/*" \)
 
-### Função para trocar caracteres  ###
-
+#### Função para trocar caracteres ####
 
 create or replace function w_fc_troca_caracter(texto text)
 returns varchar as 
@@ -78,3 +77,14 @@ return strNovoCaracter;
 end;
 $BODY$
 LANGUAGE plpgsql;
+
+####   ####
+
+select * from  pg_stat_activity where state <> 'idle'
+
+####   ####
+
+select pg_terminate_backend(pid)
+
+
+
