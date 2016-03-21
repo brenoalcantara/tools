@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#### Procurar uma coluna na tabela do banco de dados postgresql. ####
+#### Procura uma coluna específica na tabela do banco de dados postgresql. ####
 
 select
 c.relname,
@@ -12,16 +12,6 @@ WHERE
 a.attnum > 0 AND
 NOT a.attisdropped and a.attname like '%Nome da coluna aqui%'
 order by c.relname, a.attname;
-
-#### Edita um arquivo que precisa de permissão de root sem sair do vim. #### 
-
-:w !sudo tee %
-
-# Obs: para sair do arquivo :q!
-
-#### Listar arquivos excluindo alguns diretórios  ####
-
-find . -name '*.php' -mtime -5 -not \( -path "./modification/*" -o -path "./tmp/*" \)
 
 #### Função para trocar caracteres ####
 
@@ -78,11 +68,11 @@ end;
 $BODY$
 LANGUAGE plpgsql;
 
-####   ####
+#### Lista os processos ativos no postgresql  ####
 
 select * from  pg_stat_activity where state <> 'idle'
 
-####   ####
+#### Mata um processo postgresql recebendo o pid como parâmetro  ####
 
 select pg_terminate_backend(pid)
 
