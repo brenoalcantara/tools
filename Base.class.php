@@ -115,7 +115,6 @@ abstract class Base
 			$this->erro_banco  = "";
 			$this->erro_sql    = "Record vazio na tabela: {$this->tableName}.";
 			$this->erro_msg    = "Usuário: \\n ".$this->erro_sql." \\n";
-			$this->erro_msg   .=  str_replace('"',"",str_replace("'","",  "Administrador: \\n ".$this->erro_banco." \\n"));
 			$this->erro_status = 0;
 			return false;
 		}
