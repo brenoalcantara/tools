@@ -7,9 +7,6 @@
  * @license GPL
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  *
- * abstract
- * 
- * 
  */
 abstract class Base
 {
@@ -38,11 +35,12 @@ abstract class Base
 	 * Método construtor
 	 * 
 	 * @param string $tableName
+     * @return void
 	 */
     public function __construct($tableName) {
         $this->tableName = $tableName;
         $this->rotulo = new rotulo($tableName); 
-		$this->pagina_retorno =  basename($GLOBALS["HTTP_SERVER_VARS"]["PHP_SELF"]);
+		$this->pagina_retorno = basename($GLOBALS["HTTP_SERVER_VARS"]["PHP_SELF"]);
     }
 
     /**
@@ -77,7 +75,7 @@ abstract class Base
      *
      * @return bool
      */
-    abstract public function alterar($codigoSequencial = null);
+    abstract public function alterar($primaryKey = null);
 
     /**
      * Método abstrato excluir.
@@ -86,7 +84,7 @@ abstract class Base
      *
      * @return bool
      */
-    abstract public function excluir($codigoSequencial = null);
+    abstract public function excluir($primaryKey = null);
 
     /**
      * Método recordset: invoca o método db_query que executa o método pg_query (PostgreSQL)
@@ -134,7 +132,7 @@ abstract class Base
      * 
      */
     public function sql_query($columns = '*', $where = '', $orderBy = '', $groupBy = '') {
-        $sql = " SELECT {$columns} FROM $this->tableName ";
+        $sql = " SELECT {$columns} FROM {$this->tableName} ";
 
         if ($where != '') {
             $sql .= " WHERE {$where}";
