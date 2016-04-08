@@ -11,3 +11,6 @@ find . -name '*.php' -mtime -5 -not \( -path "./modification/*" -o -path "./tmp/
 #### Procura uma expressão em uma lista de arquivos ####
 
 find . -name "*.php" -exec fgrep -rino "js_abre" {} \; -print
+
+#### Lê um arquivo txt com uma lista de arquivos e copia para um diretório específico ####
+for i in `cat lista.txt`; do find "$i" -exec cp --parents {} /diretorio/destino \; ; done
