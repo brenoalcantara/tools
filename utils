@@ -1,16 +1,40 @@
-#### Edita um arquivo que precisa de permissão de root sem sair do vim. #### 
+#### Edita um arquivo que precisa de permissão de root sem sair do vim. #################
 
 :w !sudo tee %
 
 # Obs: para sair do arquivo :q!
 
-#### Listar arquivos excluindo alguns diretórios  ####
+# =======================================================================================
+
+#### Listar arquivos excluindo alguns diretórios  #######################################
 
 find . -name '*.php' -mtime -5 -not \( -path "./modification/*" -o -path "./tmp/*" \)
 
-#### Procura uma expressão em uma lista de arquivos ####
+# =======================================================================================
+
+#### Procura uma expressão em uma lista de arquivos #####################################
 
 find . -name "*.php" -exec fgrep -rino "js_abre" {} \; -print
 
-#### Lê um arquivo txt com uma lista de arquivos e copia para um diretório específico ####
+# =======================================================================================
+
+#### Lê um txt com uma lista de arquivos e copia para um diretório específico ###########
 for i in `cat lista.txt`; do find "$i" -exec cp --parents {} /diretorio/destino \; ; done
+
+# =======================================================================================
+
+#### Convertendo encoding dos arquivos ##################################################
+
+# Checa encoding
+
+file --mime-encoding filename
+
+# Lista os encodings suportados
+
+iconv -l
+
+# Converte
+
+iconv -f old_encoding -t new_encoding filename
+
+# ========================================================================================
