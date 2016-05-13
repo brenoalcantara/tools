@@ -96,3 +96,7 @@ trim(leading '0' from nome_do_campo) as nome_do_campo
 
 trim(trailing '0' from nome_do_campo) as nome_do_campo
 
+#### Dump dos inserts dos dados de uma tabela  ####
+
+pg_dump -h localhost -p 5432 -U username -W --table="tablename" --data-only --column-inserts database > /tmp/backup.sql
+
