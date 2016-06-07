@@ -100,3 +100,6 @@ trim(trailing '0' from nome_do_campo) as nome_do_campo
 
 pg_dump -h localhost -p 5432 -U username -W --table="tablename" --data-only --column-inserts database > /tmp/backup.sql
 
+### Importação do dump dos inserts ###
+
+psql -U username -d database -h localhost -p 5432 -f arquivo.sql
