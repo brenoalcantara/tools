@@ -35,7 +35,7 @@ iconv -l
 
 # Converte
 
-iconv -f old_encoding -t new_encoding filename
+iconv -f old_encoding old_filename -t new_encoding -o new_filename
 
 # ========================================================================================
 
