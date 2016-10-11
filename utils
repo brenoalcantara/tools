@@ -1,3 +1,7 @@
+#### Busca e substituição de caracteres #################################################
+
+:%s/caracter_procurado/caracter_substituto/g
+
 #### Edita um arquivo que precisa de permissão de root sem sair do vim. #################
 
 :w !sudo tee %
