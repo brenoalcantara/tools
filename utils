@@ -99,7 +99,7 @@ du -d 1 | sort -r -n | awk '{split("KB(s) MB(s) GB(s)",v); s=1; while($1>1024){$
 
 # ========================================================================================
 
-#### Mostra se os arquivos de 2 diretórios são diferentes, excluindo alguns subdiretórios 
+#### Mostra se os arquivos de 2 diretórios são diferentes, excluindo alguns subdiretórios # 
 
 diff -EwbBqr --exclude="cache" --exclude=".git" --exclude="dumps" --exclude="integracao_externa" --exclude="jobs" --exclude="tmp" e-cidade/ e-cidade_breno/ > diff.txt
 
@@ -108,5 +108,15 @@ diff -EwbBqr --exclude="cache" --exclude=".git" --exclude="dumps" --exclude="int
 #### Mata processos zumbis ############################################################### 
 
 sudo kill $(ps -A -ostat,ppid | awk '/[zZ]/{print $2}')
+
+# ========================================================================================
+
+#### Lê um arquivo linha a linha ######################################################### 
+
+while IFS='' read -r line || [[ -n "$line" ]]; do
+  echo "Texto: $line"
+done < "$1"
+
+Exemplo: ./nome-do-script nome-do-arquivo-lido
 
 # ========================================================================================
