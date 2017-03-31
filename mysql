@@ -1,0 +1,11 @@
+#!/bin/bash
+
+
+### importa dados para o mysql
+
+LOAD DATA INFILE '/absolute/path/data.csv' 
+INTO TABLE tableName
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
