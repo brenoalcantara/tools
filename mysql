@@ -16,3 +16,7 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
+
+### Format sql
+
+SELECT REPLACE(REPLACE(REPLACE(FORMAT(10000000.5,2), ',', ':'), '.', ','), ':', '.') AS format
