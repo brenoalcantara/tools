@@ -19,4 +19,11 @@ IGNORE 1 LINES;
 
 ### Format sql
 
-SELECT REPLACE(REPLACE(REPLACE(FORMAT(10000000.5,2), ',', ':'), '.', ','), ':', '.') AS format
+SELECT REPLACE(REPLACE(REPLACE(FORMAT(10000000.5,2), ',', ':'), '.', ','), ':', '.') AS format;
+
+### Get size database
+
+SELECT table_schema 'DBName'
+, ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) 'DBSize in MB' 
+FROM information_schema.tables 
+GROUP BY table_schema WITH ROLLUP;
