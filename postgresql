@@ -103,3 +103,11 @@ pg_dump -h localhost -p 5432 -U username -W --table="tablename" --data-only --co
 ### Importação do dump dos inserts ###
 
 psql -U username -d database -h localhost -p 5432 -f arquivo.sql
+
+### Dump e compactação de base ###
+
+pg_dump -U ecidade database | gzip -c > database.gz
+
+### Restore de base compactada ###
+
+gunzip -c database.gz | pg_restore -d banco
