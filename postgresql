@@ -100,14 +100,22 @@ trim(trailing '0' from nome_do_campo) as nome_do_campo
 
 pg_dump -h localhost -p 5432 -U username -W --table="tablename" --data-only --column-inserts database > /tmp/backup.sql
 
-### Importação do dump dos inserts ###
+#### Importação do dump dos inserts ####
 
 psql -U username -d database -h localhost -p 5432 -f arquivo.sql
 
-### Dump e compactação de base ###
+#### Dump e compactação de base ####
 
 pg_dump -U ecidade database | gzip -c > database.gz
 
-### Restore de base compactada ###
+#### Restore de base compactada ####
 
 gunzip -c database.gz | pg_restore -d banco
+
+#### Get size tables ####
+
+SELECT
+relname AS "Table",
+pg_size_pretty(pg_total_relation_size(relid)) AS "Size",
+pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) AS "External Size"	
+FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC
