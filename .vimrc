@@ -1,5 +1,5 @@
 "" Visual Settings
-syntax enable
+syntax on
 set ruler
 set number
 colorscheme monokai
@@ -17,34 +17,33 @@ set ignorecase
 
 "" Tabs
 
+set ai
 set tabstop=4
 set shiftwidth=4
-set softtabstop=0
+set softtabstop=4
 set expandtab
 
 "" Plugins
 
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'bling/vim-airline'
+Plug 'emmetio/emmet'
+Plug 'nelstrom/vim-markdown-preview'
+
+call plug#end()
 
 "" NERDTree configuration
-
+  
 map <C-n> :NERDTreeToggle<CR>
-
+  
 "" Emmet configuration
-
+  
 let user_emmet_expandabbr_key = '<c-e>'
 
-"" NERDTree Git configurarion
+"" Markdow Preview configuration
 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+map <leader>p :Mm<CR>
 

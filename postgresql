@@ -119,3 +119,12 @@ relname AS "Table",
 pg_size_pretty(pg_total_relation_size(relid)) AS "Size",
 pg_size_pretty(pg_total_relation_size(relid) - pg_relation_size(relid)) AS "External Size"	
 FROM pg_catalog.pg_statio_user_tables ORDER BY pg_total_relation_size(relid) DESC
+
+#### Row counts for all tables postgresql ####
+
+SELECT 
+nspname AS schemaname,relname,reltuples
+FROM pg_class C
+LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace)
+WHERE nspname NOT IN ('pg_catalog', 'information_schema') AND relkind='r' 
+ORDER BY reltuples DESC;
