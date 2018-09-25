@@ -115,6 +115,14 @@ pg_dump -U ecidade database | gzip -c > database.gz
 
 gunzip -c database.gz | pg_restore -d banco
 
+#### ####
+
+pg_dump --host localhost --port 5432 --username ecidade --schema portaloportunidades folha_saude > 2018-09-25.sql
+
+#### ####
+
+pg_dump -h localhost -U my_user -d my_database -n public -s > migration.sql
+
 #### Get size tables ####
 
 SELECT
