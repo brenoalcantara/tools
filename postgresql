@@ -165,3 +165,13 @@ ORDER BY schema_name;
 COPY (Select * From foo) TO '/tmp/test.csv' WITH CSV DELIMITER ',';
 
 vacuum full freeze verbose analyze;
+
+#### Salvar função PL ####
+
+COPY (SELECT pg_get_functiondef('functionName'::regproc)) TO '/tmp/arquivo.sql';
+
+#### Para o E-cidade ####
+
+select fc_startsession();
+select fc_putsession('DB_anousu', '2018');
+select fc_putsession('DB_debugon', '1');
