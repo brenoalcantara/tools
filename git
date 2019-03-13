@@ -1,0 +1,3 @@
+#### Lista os arquivos modificados nos 2 últimos dias. ####
+
+git log --pretty=format: --name-only --since="2 days ago" | sort | uniq
