@@ -1,3 +1,15 @@
 #### Lista os arquivos modificados nos 2 últimos dias. ####
 
 git log --pretty=format: --name-only --since="2 days ago" | sort | uniq
+
+#### Lista as branchs em ordem crescente ####
+
+git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:cyan)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+
+#### Lista as branchs em ordem crescente (somente o nome das branchs) ####
+
+git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:cyan)%(refname:short)'
+
+#### Lista as 5 branchs mais recentes (somente o nome das branchs) ####
+
+git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:cyan)%(refname:short)'
