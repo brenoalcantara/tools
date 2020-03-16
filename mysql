@@ -23,7 +23,17 @@ SELECT REPLACE(REPLACE(REPLACE(FORMAT(10000000.5,2), ',', ':'), '.', ','), ':', 
 
 ### Get size database
 
-SELECT table_schema 'DBName'
-, ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) 'DBSize in MB' 
+SELECT 
+	table_schema 'DBName'
+	, ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) 'DBSize in MB' 
 FROM information_schema.tables 
 GROUP BY table_schema WITH ROLLUP;
+
+###
+
+SELECT 
+	table_name
+	, ROUND(data_length / 1024 / 1024) AS data_length_mb
+	, ROUND(data_free / 1024 / 1024) AS data_free_mb 
+FROM information_schema.tables 
+WHERE table_name in ('Table name')

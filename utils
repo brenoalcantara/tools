@@ -132,3 +132,21 @@ vimdiff  file1.txt file2.txt -c TOhtml -c 'w! diff.html' -c 'qa!'
 cat -e arquivo
 
 # ========================================================================================
+
+#### Vim: encontra cada ocorrência de 'foo' (em todas as linhas) e substitui por 'bar' ===
+
+:%s/foo/bar/g
+
+# ========================================================================================
+
+#### Vim: encontra cada ocorrência de 'foo' (apenas na linha atual) e substitui por 'bar'
+
+:s/foo/bar/g
+
+# ========================================================================================
+
+#### Remove o caracter '\r' do arquivo 'input.txt', criando um novo arquivo: output.txt ==
+
+tr -d '\r' < input.txt > output.txt
+
+# ========================================================================================
