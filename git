@@ -13,3 +13,15 @@ git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:cyan
 #### Lista as 5 branchs mais recentes (somente o nome das branchs) ####
 
 git for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:cyan)%(refname:short)'
+
+#### Renomeia uma branch: certifique-se de estar na branch que desejas renomear ####
+
+git branch -m novo-nome
+
+#### Limpa o cache do repositório ####
+
+git rm -rf --cached .
+
+#### Troca da mensagem do commit ####
+
+git commit --amend -m "New commit message"
