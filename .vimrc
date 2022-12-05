@@ -31,7 +31,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'emmetio/emmet'
+"" or Plug 'mattn/emmet-vim'
 Plug 'nelstrom/vim-markdown-preview'
+"" or Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 

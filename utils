@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #### Busca e substituição de caracteres #################################################
 
 :%s/caracter_procurado/caracter_substituto/g
