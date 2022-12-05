@@ -162,7 +162,11 @@ ON relnamespace = pg_catalog.pg_namespace.oid
 GROUP BY schema_name
 ORDER BY schema_name;
 
+#### Exporta registros de um select para um arquivo CSV ####
+
 COPY (Select * From foo) TO '/tmp/test.csv' WITH CSV DELIMITER ',';
+
+#### Otimizar base de dados ####
 
 vacuum full freeze verbose analyze;
 

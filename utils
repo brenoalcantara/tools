@@ -120,3 +120,69 @@ done < "$1"
 Exemplo: ./nome-do-script nome-do-arquivo-lido
 
 # ========================================================================================
+
+#### Gera uma página html com o output do vimdiff ========================================
+
+vimdiff  file1.txt file2.txt -c TOhtml -c 'w! diff.html' -c 'qa!'
+
+# ========================================================================================
+
+#### Mostra o caractere de término da linha. Se \r\n = ^M$; se \n = $ ====================
+
+cat -e arquivo
+
+# ========================================================================================
+
+#### Vim: encontra cada ocorrência de 'foo' (em todas as linhas) e substitui por 'bar' ===
+
+:%s/foo/bar/g
+
+# ========================================================================================
+
+#### Vim: encontra cada ocorrência de 'foo' (apenas na linha atual) e substitui por 'bar'
+
+:s/foo/bar/g
+
+# ========================================================================================
+
+#### Remove o caracter '\r' do arquivo 'input.txt', criando um novo arquivo: output.txt ==
+
+tr -d '\r' < input.txt > output.txt
+
+# ========================================================================================
+
+#### Conta o número de colunas de um arquivo com separador (;). ==========================
+
+head -1 arquivo.txt | sed 's/[^;]//g' | wc -c
+
+# ========================================================================================
+
+#### Mostra a soma do tamanho dos arquivos no diretório ==================================
+
+du -ach /diretorio/
+
+# ========================================================================================
+
+#### Abre o arquivo credentials-config.json do Dbeaver para expor as credenciais =========
+
+openssl aes-128-cbc -d -K babb4a9f774ab853c96c2d653dfe544a -iv 00000000000000000000000000000000 -in credentials-config.json | dd bs=1 skip=16 2>/dev/null
+
+# ========================================================================================
+
+#### Removendo os resultados com "permission denied" =====================================
+
+grep -ril 'texto' /DSOP/PHP 2> /dev/null
+
+# ========================================================================================
+
+#### Zerando arquivo do seu conteúdo =====================================================
+
+echo -n > arquivo
+
+# ========================================================================================
+
+#### Pesquisando palavras repetidas no arquivo ===========================================
+
+cut -d" " -f1 file.txt | sort | uniq -d
+
+# ========================================================================================
