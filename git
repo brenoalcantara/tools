@@ -25,3 +25,10 @@ git rm -rf --cached .
 #### Troca da mensagem do commit ####
 
 git commit --amend -m "New commit message"
+
+#### Seleciona o log de uma data até outra ####
+
+git log --since='Jan 25 2023' --until='Jan 30 2023'
+
+### Mostrar um arquivo em um commit específico ###
+git show commit-hash:path/to/file
