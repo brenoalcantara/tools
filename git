@@ -31,4 +31,16 @@ git commit --amend -m "New commit message"
 git log --since='Jan 25 2023' --until='Jan 30 2023'
 
 ### Mostrar um arquivo em um commit específico ###
+
 git show commit-hash:path/to/file
+
+git log main --first-parent --merges \
+        --pretty=format:"%h %<(10,trunc)%aN %C(white)%<(15)%ar%Creset %C(red bold)%<(15)%D%Creset %s"
+
+### Listando branches modificadas em ordem decrescente ###
+
+for k in $(git branch | perl -pe s/^..//); do echo -e $(git show --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k -- | head -n 1)\\t$k; done | sort -r
+
+### Verificando se um commit específico existe em uma branch ###
+
+git branch --contains $COMMIT_ID
