@@ -44,3 +44,7 @@ for k in $(git branch | perl -pe s/^..//); do echo -e $(git show --pretty=format
 ### Verificando se um commit específico existe em uma branch ###
 
 git branch --contains $COMMIT_ID
+
+### Procurando uma string pelas branchs ###
+
+git grep "string/regexp" $(git rev-list --all)
